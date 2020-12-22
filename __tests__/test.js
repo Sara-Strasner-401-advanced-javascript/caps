@@ -2,6 +2,7 @@
 // Use spies to help testing your logger methods (assert that console.log was called right)
 
 const events = require('../events');
+const caps = require('../caps');
 const vendor = require('../vendor');
 const driver = require('../driver');
 
