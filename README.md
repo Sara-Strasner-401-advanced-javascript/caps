@@ -7,7 +7,7 @@
 ### Links and Resources
 
 - [ci/cd](https://github.com/sarastrasner/caps/actions)
-- [latest pull reques](https://github.com/sarastrasner/caps/pull/3) 
+- [latest pull reques](https://github.com/sarastrasner/caps/pull/4) 
 
 ### Setup
 
@@ -23,9 +23,9 @@
 
 #### Tests
 
-- Tests runnning via Jest.
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- Tests runnning via Jest and passing locally.
+- I had to separate my console logs into their own functions in order for the tests to pass. They wouldn't pass while in SetTimeout functions.
+
 
 #### UML
 ![UML](assets/UML.png)
