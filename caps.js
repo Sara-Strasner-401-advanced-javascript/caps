@@ -1,24 +1,39 @@
 'use strict';
 
-const events = require('./events');
+require('dotenv').config();
+const port = process.env.PORT;
+const io = require('socket.io')(port);
+const caps = io.of('/caps');
 
-require('./driver');
-require('./vendor');
-
-events.on('pickup', (payload) => {
-  console.log('EVENT', { event: 'pickup',
-    time: new Date(),
-    payload} );
+io.on('connection', (socket) => {
+  console.log('You are now connected to main socket', socket.id);
 });
 
-events.on('delivered', (payload) => {
-  console.log('EVENT', { event: 'delivered',
-    time: new Date(),
-    payload} );
-});
+caps.on('connection', (socket) => {
+  console.log('You are now connected to the CAPS namespace', socket.id);
+  socket.on('join', room => {
+    console.log('registered as', room);
+    socket.join(room);
+  });
 
-events.on('in-transit', (payload) => {
-  console.log('EVENT', { event: 'in-transit',
-    time: new Date(),
-    payload} );
+  socket.on('pickup', (payload) => {
+    console.log('EVENT', { event: 'pickup',
+      time: new Date().toString(),
+      payload} );
+    caps.emit('pickup', payload);
+  });
+
+  socket.on('in-transit', (payload) => {
+    console.log('EVENT', { event: 'in-transit',
+      time: new Date().toString(),
+      payload} );
+    caps.to(payload.store).emit('in-transit', payload);
+  });
+
+  socket.on('delivered', (payload) => {
+    console.log('EVENT', { event: 'delivered',
+      time: new Date().toString(),
+      payload} );
+    caps.to(payload.store).emit('delivered', payload);
+  });
 });

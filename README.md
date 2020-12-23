@@ -7,25 +7,26 @@
 ### Links and Resources
 
 - [ci/cd](https://github.com/sarastrasner/caps/actions)
-- [latest pull reques](https://github.com/sarastrasner/caps/pull/5) 
+- [latest pull reques](https://github.com/sarastrasner/caps/pull/6) 
 
 ### Setup
 
 #### `.env` requirements (where applicable)
 
 - STORE=Unicorn Rentals
+-PORT=3000
 
 #### How to initialize/run your application (where applicable)
 
-- e.g. `npm caps.js`
+- `npm caps.js`
+- `npm driver.js`
+- `npm vender.js`
 
 #### How to use your library (where applicable)
 
 #### Tests
 
-- Tests runnning via Jest and passing locally.
-- I had to separate my console logs into their own functions in order for the tests to pass. They wouldn't pass while in SetTimeout functions.
-
+- I refactored my tests from yesterday, but kept running into the error of `TypeError: wsModule.Server is not a constructor`. I tried reasearching the error and couldn't find a solution that would work with my code.
 
 #### UML
 ![UML](assets/UML.png)

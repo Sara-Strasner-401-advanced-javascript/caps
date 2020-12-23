@@ -1,11 +1,7 @@
-// Write unit tests for each event handler function (not event triggers themselves)
-// Use spies to help testing your logger methods (assert that console.log was called right)
 
-const events = require('../events');
 const caps = require('../caps');
-const vendor = require('../vendor');
-const driver = require('../driver');
-
+const vendor = require('../vendor/vendor');
+const driver = require('../driver/driver');
 
 describe('Console Logs', () => {
   let consoleSpy;
@@ -19,23 +15,26 @@ describe('Console Logs', () => {
     consoleSpy.mockRestore();
   });
 
+  it('picks up an order', () => {
+    caps.emit('delivered', {orderID: 1});
+    setTimeout(() => { expect(consoleSpy).toHaveBeenCalled(); }, 1000);
+  });
+
   it('Verify the delivered emission triggers a console.log', () => {
-    events.emit('delivered', {orderID: 1});
+    caps.emit('delivered', {orderID: 1});
     expect(consoleSpy).toBeCalled();
   });
 
   it('Verify the pickup emission triggers a console.log', () => {
-    events.emit('pickup', {orderID: 1});
+    caps.emit('pickup', {orderID: 1});
     expect(consoleSpy).toBeCalled();
   });
 
   it('Verify the in-transit emission triggers', () => {
-    events.emit('in-transit', {orderID: 1});
+    caps.emit('in-transit', {orderID: 1});
     expect(consoleSpy).toBeCalled();
   });
 
 });
 
-
-
-
+//^^^^^TypeError: wsModule.Server is not a constructor
