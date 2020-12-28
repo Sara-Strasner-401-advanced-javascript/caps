@@ -7,20 +7,20 @@
 ### Links and Resources
 
 - [ci/cd](https://github.com/sarastrasner/caps/actions)
-- [latest pull reques](https://github.com/sarastrasner/caps/pull/6) 
+- [latest pull reques](https://github.com/sarastrasner/caps/pull/7) 
 
 ### Setup
 
 #### `.env` requirements (where applicable)
 
-- STORE=Unicorn Rentals
 -PORT=3000
 
 #### How to initialize/run your application (where applicable)
 
-- `npm caps.js`
+- `npm queue.js`
 - `npm driver.js`
-- `npm vender.js`
+- `npm acme.js`
+- `npm flowers.js`
 
 #### How to use your library (where applicable)
 
